@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<h1 style="text-align: center">
+  Admin Login Forum
+</h1>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+
+    
+    <!--form (ngSubmit)="logingData(form1)" #form1="ngForm"-->
+    <form (ngSubmit)="logData()" #form1="ngForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" id="exampleInputUsername" placeholder="Username" name="unm" [(ngModel)] = "admnlogdet.username" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" name="pwd" [(ngModel)] = "admnlogdet.password" required minlength="5">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputKey">Seriel Key</label>
+        <input type="password" class="form-control" id="exampleInputKey" placeholder="Key" name="sky" [(ngModel)] = "admnlogdet.serial" required minlength="5">
+      </div>
+      <button type="submit" class="btn btn-success">Login</button>
+    </form>
+  </div>
+
+  <div class="col-md-2"></div>
+
+</div>

@@ -1,0 +1,66 @@
+<app-adminsidebar></app-adminsidebar>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+      <div class="card">
+          <div class="header row">
+              <h4 class="title col-md-8">User Details</h4>
+              <!--button class="btn btn-info btn-filled col-md-2" (click)="addBooks()">
+                Add new Books
+              </button-->
+              
+              <!--p class="category">Here is a subtitle for this table</p-->
+          </div>
+          <br>
+          <div class="content table-responsive table-full-width">
+              <table class="table table-hover table-striped" style="align-content: center">
+                  <thead>
+                    <th class="col-md-2">User no</th>
+                    <th class="col-md-1">firstname</th>
+                    <th class="col-md-1">lastname</th>
+                    <th class="col-md-2">Username</th>
+                    <th class="col-md-2">Reg no</th>                    
+                    <th class="col-md-2">Contact</th>
+                    <th class="col-md-2">Delete</th>
+                  </thead>
+                  <tbody>
+
+                      <tr *ngFor="let item of this.userData">
+                          <td>{{item._id}}</td>
+                          <td>{{item.firstname}}</td>
+                          <td>{{item.lastname}}</td>
+                          <td>{{item.username}}</td>
+                          <td>{{item.regno}}</td>
+                          <td>{{item.contact}}</td>
+                          <td>
+                              <!--button class="btn btn-info" (click)="openEdtBk(item)">Edit</button-->
+                              <button class="btn btn-danger" (click)="shwDlt()">Delete</button>
+                          </td>
+                          
+                        </tr>
+                    
+                    <!--tr *ngFor="let item of this.bookData"-->
+                    <!--tr *ngFor="let item of this.bookData">
+                      <td>{{item._id}}</td>
+                      <td>{{item.bookname}}</td>
+                      <td>{{item.subject}}</td>
+                      <td>{{item.authorname}}</td>
+                      <td>{{item.isbn_no}}</td>
+                      <td>
+                          <button class="btn btn-info" (click)="openEdtBk(item)">Edit</button>
+                          <button class="btn btn-danger" (click)="shwDlt()">Delete</button>
+                      </td>
+                      
+                    </tr-->
+                     
+                  </tbody>
+              </table>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

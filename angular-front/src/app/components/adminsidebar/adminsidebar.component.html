@@ -1,0 +1,50 @@
+<app-admnnavbar></app-admnnavbar>
+
+<br>
+
+<base href="../../../">
+
+<div class="wrapper col-md-3">
+  <div class="sidebar" data-color="green" data-image="assets/userassets/img/sidebar-5.jpg">
+
+  <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="" class="simple-text">
+                UCSC Library <br> Admin Profile
+            </a>
+        </div>
+
+          <ul class="nav">
+             
+              <li>
+                  <a [routerLink]="['/admnProfile']">
+                      <i class="pe-7s-user"></i>
+                      <p>User Profile</p>
+                  </a>
+              </li>
+              <li>
+                <a [routerLink]="['/admnbook']">
+                      <i class="pe-7s-note2"></i>
+                      <p>Manage books</p>
+                  </a>
+              </li>
+              <li>
+                  <a [routerLink]="['/mnguser']">
+                      <i class="pe-7s-user"></i>
+                      <p>Manage Users</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="">
+                      <i class="pe-7s-cash"></i>
+                      <p>Fine Payments</p>
+                  </a>
+              </li>
+              
+          </ul>
+    </div>
+  </div>
+

@@ -1,0 +1,215 @@
+<app-adminsidebar></app-adminsidebar>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+      <div class="card">
+          <div class="header row">
+              <h4 class="title col-md-8">Book Details</h4>
+              <button class="btn btn-info btn-filled col-md-2" (click)="addBooks()">
+                Add new Books
+              </button>
+              
+              <!--p class="category">Here is a subtitle for this table</p-->
+          </div>
+          <br>
+          <div class="content table-responsive table-full-width">
+              <table class="table table-hover table-striped" style="align-content: center">
+                  <thead>
+                    <th class="col-md-2">Book no</th>
+                    <th class="col-md-2">Book Name</th>
+                    <th class="col-md-2">Subject</th>
+                    <th class="col-md-2">Author name</th>
+                    <th class="col-md-1">ISBN No</th>
+                    <th class="col-md-3">Action</th>
+                  </thead>
+                  <tbody>
+                    
+                    <!--tr *ngFor="let item of this.bookData"-->
+                    <tr *ngFor="let item of this.bookData">
+                      <td>{{item._id}}</td>
+                      <td>{{item.bookname}}</td>
+                      <td>{{item.subject}}</td>
+                      <td>{{item.authorname}}</td>
+                      <td>{{item.isbn_no}}</td>
+                      <td>
+                          <button class="btn btn-info" (click)="openEdtBk(item)">Edit</button>
+                          <button class="btn btn-danger" (click)="shwDlt()">Delete</button>
+                      </td>
+                      
+                    </tr>
+                     
+                  </tbody>
+              </table>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--
+  
+                              FORM FOR ADDING A NEW BOOK
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Add new Books</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        <button type="button col-md-1" class="Close" aria-label="Close " (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body container col-md-12">
+
+        <!-- Form body -->
+
+        <form>
+          <fieldset>
+
+            
+            <div class="form-group">
+              <label for="exampleInputPassword1">Book name</label>
+              <input type="text" class="form-control" name="dnm" placeholder="Book name" value="" [(ngModel)] = "bookdet.bookname" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Author name</label>
+                <input type="text" class="form-control" name="dnm" placeholder="Author name" value="" [(ngModel)] = "bookdet.authorname" required>
+              </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">ISBN Number</label>
+              <input type="text" class="form-control" name="mbno" placeholder="ISBN no" value="" [(ngModel)] = "bookdet.isbn_no" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Subject</label>
+              <input type="text" class="form-control" name="tno" placeholder="Subject" value="" [(ngModel)] = "bookdet.subject" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">No of copies</label>
+              <input type="text" class="form-control" name="tno" placeholder="no of copies" value="" [(ngModel)] = "bookdet.copies" required>
+            </div>
+            
+            
+            <button type="submit" class="btn btn-success" (click)="addnewBook()">Add</button>
+                  
+                                                       
+          </fieldset>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+
+<!--
+                               Edit book details
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display2}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Edit Book Details</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        <button type="button col-md-1" class="Close" aria-label="Close " (click)="onCloseHandled2()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body container col-md-12">
+
+        <!-- Form body -->
+
+        <form>
+          <fieldset>
+
+            
+            <div class="form-group">
+              <label for="exampleInputPassword1">Book name</label>
+              <input type="text" class="form-control" name="dnm" placeholder="Driver name" value="updt_bookdet.bookname" [(ngModel)] = "updt_bookdet.bookname" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Author name</label>
+                <input type="text" class="form-control" name="anm" placeholder="Driver name" value="updt_bookdet.authorname" [(ngModel)] = "updt_bookdet.authorname" required>
+              </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">ISBN Number</label>
+              <input type="text" class="form-control" name="mbno" placeholder="Mobile no" value="updt_bookdet.isbn_no" [(ngModel)] = "updt_bookdet.isbn_no" required>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Subject</label>
+              <input type="text" class="form-control" name="tno" placeholder="Truck no" value="updt_bookdet.subject" [(ngModel)] = "updt_bookdet.subject" required>
+            </div>
+            <!--div class="form-group">
+              <label for="exampleInputPassword1">No of copies</label>
+              <input type="text" class="form-control" name="tno" placeholder="Truck no" values="" [(ngModel)] = "updt_bookdet.copies" required>
+            </div-->
+            
+            
+            <button type="submit" class="btn btn-success" (click)="editBook()">Edit</button>
+                  
+                                                       
+          </fieldset>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+
+<!--
+                               Delete books
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display3}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display3}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Delete Book</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        
+          
+      </div>
+      <div class="modal-body container col-md-12">
+
+        <!-- Form body -->
+
+        <p>
+          Are you sure about deleting this book
+        </p>
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="onCloseHandled3()">No</button>
+        <button type="button" class="btn btn-danger" (click)="onCloseHandled3()">Yes</button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+

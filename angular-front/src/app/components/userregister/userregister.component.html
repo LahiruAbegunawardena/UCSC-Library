@@ -1,0 +1,83 @@
+<app-navbar></app-navbar>
+
+<h1 style="text-align: center">
+  User Registration Form
+</h1>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+
+    
+    <form  (ngSubmit)="sendregUser()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name</label>
+        <input type="text" class="form-control" placeholder="Lahiru" name="fnm" value="" [(ngModel)] = "user_det.firstname" required>
+      </div>
+      <div class="form-group">
+          <label for="exampleInputEmail1">Last Name</label>
+          <input type="text" class="form-control" placeholder="Abe" name="lnm" value="" [(ngModel)] = "user_det.lastname" required>
+        </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" placeholder="15XXXXXX" name="unm" value="" [(ngModel)] = "user_det.username" required maxlength="8">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Registration no</label>
+        <input type="text" class="form-control" placeholder="2015/CS/001" name="regno" value="" [(ngModel)] = "user_det.regno" required maxlength="11">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Contact details</label>
+        <input type="text" class="form-control" placeholder="07TPPPPPPP" name="cntct" value="" [(ngModel)] = "user_det.contact" required maxlength="10">
+        </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Address</label>
+        <input type="text" class="form-control" placeholder="Address" name="addr" value="" [(ngModel)] = "user_det.address" required>
+      
+        
+
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" placeholder="Password" name="pwd" value="" [(ngModel)] = "user_det.password" required minlength="5" #pswd = "ngModel">
+      
+        <br>
+
+        <div *ngIf = "!pswd.valid">
+          <span class="alert alert-danger">Required</span>
+        </div>
+      
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password Again<span class="glyphicon glyphicon-asterisk-sm" aria-hidden="true" style="color:red;"></span></label>
+        <input type="password" class="form-control" placeholder="Password again" name="pwd_a" value="" [(ngModel)] = "user_det.passworda" required minlength="5" #pswda="ngModel">
+
+        <br>        
+
+        <div class="row">
+
+            <div *ngIf = "!pswda.valid">
+              <span class="alert alert-danger" *ngIf="pswda.errors.minlength">Minimum length is 5</span>
+            </div>
+      
+            <div class="alert alert-danger" *ngIf = "!(pswda.value==pswd.value)">
+              <!--span class="alert alert-danger"></span-->
+              <span class="glyphicon glyphicon-asterisk" aria-hidden="true" style="color:red;"></span>Not equal to password
+              
+              
+            </div>
+
+        </div>
+       
+
+      </div>
+
+      <button type="submit" class="btn btn-success">Register</button>
+    </form>
+  </div>
+
+  <div class="col-md-3"></div>
+
+</div>
