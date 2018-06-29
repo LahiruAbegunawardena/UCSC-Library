@@ -40,11 +40,11 @@ export class ReguserprofileComponent implements OnInit {
       this.loggedUserData = res.data;
       console.log(this.loggedUserData);
 
+      console.log(res);
+
       
 
-    });    
-
-    
+    });        
   }
 
 }

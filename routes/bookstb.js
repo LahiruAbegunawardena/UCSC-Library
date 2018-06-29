@@ -18,13 +18,7 @@ router.post("/show", function(req,res){
     Books.findallBooks(function(err, book){
         if(err) throw err;
         if(book){
-            //console.log(book);
-
-            //return book;
-
             res.json({book_details : book});
-            
-            //
         }
 
     });

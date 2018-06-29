@@ -148,5 +148,49 @@ export class AuthService {
    // return this.http.post('');
   }
 
+  requestBorrowbk(bkdet){
+    //console.log('Authentify');
+   // console.log(user);
+
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/brwbook/request",bkdet, {headers:headers});
+    
+  }
+
+  getAllBookRequest(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    return this.http.post("http://localhost:3000/brwbook/show", {headers:headers}).map(res=>res.json());
+   // return this.http.post('');
+  }
+
+  setBorrowDet(borrowdet){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/borrows/insert",borrowdet, {headers:headers});
+  }
+
+  deleteBrwReq(borrowreq){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/brwbook/delete1",borrowreq, {headers:headers});
+  }
+
+  getBookBorrowDet(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    return this.http.post("http://localhost:3000/borrows/show", {headers:headers}).map(res=>res.json());
+   // return this.http.post('');
+  }
+
 }
 

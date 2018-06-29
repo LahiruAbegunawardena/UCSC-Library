@@ -21,7 +21,8 @@ const passport = require('passport');
 const admn = require('./routes/admin'); //functions of Admin
 const rguser = require('./routes/reguser'); //fnctions of registered user
 const book = require('./routes/bookstb');
-
+const bkrqir = require('./routes/borrowing');
+const brrwdet = require('./routes/borrwdet');
 
 
 //use above classes we create this constants;;
@@ -61,6 +62,8 @@ app.get("/",function (req,res){
 app.use('/admin', admn); //if route is localhost:3000/admin
 app.use('/user', rguser); //if route is localhost:3000/user
 app.use('/books', book);
+app.use('/brwbook', bkrqir);
+app.use('/borrows', brrwdet);
 
 app.listen(port, function(){
     console.log("listening to port "+port);

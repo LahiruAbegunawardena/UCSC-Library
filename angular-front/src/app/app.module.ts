@@ -27,20 +27,31 @@ import { AdmnloginComponent } from './components/admnlogin/admnlogin.component';
 import { AuthService } from './services/auth.service';
 import { AdmnbooksComponent } from './components/admnbooks/admnbooks.component';
 import { ManageusersComponent } from './components/manageusers/manageusers.component';
+import { ManagebrrwsComponent } from './components/managebrrws/managebrrws.component';
 
 const appRoutes: Routes = [
+
+  //home page
+
   { path: '', component: HomepageComponent},
   { path: 'logPage', component: LoginpageComponent},
   { path: 'regUser', component: UserregisterComponent},
+
+  //user profile
+
   { path: 'userProfile', component: ReguserprofileComponent},
   { path: 'books', component: BooksComponent},
   { path: 'myborrw', component: UserBorrowingsComponent},
   { path: 'userFines', component: UserFinesComponent},
 
+  //admin profile
+
   { path: 'admnProfile', component:AdmnprofileComponent},
   { path: 'admnLog', component:AdmnloginComponent},
   { path: 'admnbook', component:AdmnbooksComponent},
   { path: 'mnguser', component:ManageusersComponent},
+  { path: 'mngborrow', component:ManagebrrwsComponent},
+
 
 
 
@@ -67,7 +78,8 @@ const appRoutes: Routes = [
     AdmnnavbarComponent,
     AdmnloginComponent,
     AdmnbooksComponent,
-    ManageusersComponent
+    ManageusersComponent,
+    ManagebrrwsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

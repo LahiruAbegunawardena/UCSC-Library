@@ -5,7 +5,7 @@
 <base href="../../../">
 
 <div class="wrapper col-md-3">
-  <div class="sidebar" data-color="green" data-image="assets/userassets/img/sidebar-5.jpg">
+  <div class="sidebar" data-color="purple" data-image="assets/userassets/img/sidebar-4.jpg">
 
   <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -33,12 +33,18 @@
               </li>
               <li>
                   <a [routerLink]="['/mnguser']">
-                      <i class="pe-7s-user"></i>
+                      <i class="pe-7s-users"></i>
                       <p>Manage Users</p>
                   </a>
               </li>
               <li>
-                  <a href="">
+                <a [routerLink]="['/mngborrow']">
+                      <i class="pe-7s-paperclip"></i>
+                      <p>Manage borrowings</p>
+                  </a>
+              </li>
+              <li>
+                  <a [routerLink]="['']">
                       <i class="pe-7s-cash"></i>
                       <p>Fine Payments</p>
                   </a>

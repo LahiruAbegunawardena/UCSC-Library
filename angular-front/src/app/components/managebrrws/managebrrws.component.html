@@ -1,0 +1,198 @@
+<app-adminsidebar></app-adminsidebar>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+      <div class="card">
+          <div class="header row">
+              <h4 class="title col-md-8">Current borrow Details</h4>
+              <button class="btn btn-info btn-filled col-md-3" (click)="brwRqstDetails()">Borrow request details</button>
+              <!--p class="category">Here is a subtitle for this table</p-->
+          </div>
+          <br>
+          <div class="content table-responsive table-full-width">
+              <table class="table table-hover table-striped" style="align-content: center">
+                  <thead>
+                    <th class="col-md-1">Request no</th>
+                    <th class="col-md-1">Username</th>
+
+                    <th class="col-md-2">Book Name</th>
+                    <th class="col-md-2">ISBN No</th>
+                    <th class="col-md-1">Taken Date</th>
+                    <th class="col-md-1">Due Date</th>
+                    <!--th class="col-md-1">No of copies</th-->
+                    <th class="col-md-3">Action</th>
+                  </thead>
+                  <tbody>
+                    <!--tr>
+                      <td>1</td>
+                      <td>15000011</td>
+                      <td>Hound of the Baskerwills</td>
+                      <td>ISBN - 3245</td>
+                      <td>2018 - 06 - 05</td>
+                      <td>2018 - 06 - 12</td>
+                      <td>
+                        <button class="btn btn-success">Resolved</button>
+                        <button class="btn btn-success">Edit</button>
+
+                      </td>
+                    </tr-->
+
+                    <tr *ngFor="let item of this.brwdet">
+                      <td>{{item._id}}</td>
+                      <td>{{item.username}}</td>
+                      <td>{{item.bookname}}</td>
+                      <td>{{item.isbn_no}}</td>
+                      <td>{{item.takendate}}</td>
+                      <td>{{item.duedate}}</td>
+                      <td>
+                        <button class="btn btn-success">Resolved</button>
+                        <button class="btn btn-success">Edit</button>
+                      </td>
+                      
+                    </tr>
+
+                    <!--tr *ngFor="let item of this.bookData"
+                    <tr *ngFor="let item of this.bookData">
+                      <td>{{item._id}}</td>
+                      <td>{{item.bookname}}</td>
+                      <td>{{item.subject}}</td>
+                      <td>{{item.authorname}}</td>
+                      <td>{{item.isbn_no}}</td>
+                      <td>{{item.copies}}</td>
+                      <td>
+                        <button class="btn btn-success" (click)="requestBk(item)">Request</button>
+                      </td>
+                    </tr>-->
+                     
+                  </tbody>
+              </table>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<!--
+                               Manage user's borrow details by admin
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Borrow requests</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        <button type="button col-md-1" class="Close" aria-label="Close " (click)="oncloseEdit()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <br>
+      <div class="content table-responsive table-full-width col-md-12">
+        <table class="table table-hover table-striped" style="align-content: center">
+            <thead>
+              <th class="col-md-2">Request no</th>
+              <th class="col-md-2">Username</th>
+              <th class="col-md-3">Book Name</th>
+              <th class="col-md-2">ISBN No</th>
+              <th class="col-md-3">Action</th>
+            </thead>
+            <tbody>
+              
+                  <tr *ngFor="let item of this.borrwrqstdet">
+                      <td>{{item._id}}</td>
+                      <td>{{item.username}}</td>
+                      <td>{{item.bookname}}</td>
+                      <td>{{item.isbn_no}}</td>                      
+                      <td>
+                        <button class="btn btn-success" (click)="reslvBkRqst(item)">Approve</button>
+                        <button class="btn btn-danger" (click)="deleteBkRequest(item)">Delete</button>
+                      </td> 
+                      
+                    </tr>              
+            </tbody>
+        </table>
+
+    </div>
+
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+
+<!--
+  
+                              FORM FOR SETTING BOOK REQUEST
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display2}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Set Borrow details</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        <button type="button col-md-1" class="Close" aria-label="Close " (click)="onCloseHandled2()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body container col-md-12">
+
+        <!-- Form body -->
+
+        <form>
+          <fieldset>
+
+            
+            <div class="form-group">
+              <label for="exampleInputPassword1">Username</label>
+              <input type="text" class="form-control" name="bnm" placeholder="Book name" [(ngModel)] = "borrowdet.username" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Bookname</label>
+                <input type="text" class="form-control" name="unm" placeholder="Username" [(ngModel)] = "borrowdet.bookname" required>
+              </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">ISBN Number</label>
+              <input type="text" class="form-control" name="mbno" placeholder="ISBN no" [(ngModel)] = "borrowdet.isbn_no" required>
+            </div>
+            <!--div class="form-group">
+              <label for="exampleInputPassword1">Taken Date</label>
+              <input type="date" class="form-control" name="tno" placeholder="Subject" [(ngModel)] = "borrowdet.takendate" required>
+            </div-->
+            <div class="form-group">
+              <label for="exampleInputPassword1">Due Date</label>
+              <input type="date" class="form-control" name="tno" placeholder="no of copies" [(ngModel)] = "borrowdet.duedate" min=this.CurDate required>
+            </div>
+             
+            
+            <button type="submit" class="btn btn-success" (click)="setBorrow()">Set Borrow</button>
+                  
+                                                       
+          </fieldset>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+
