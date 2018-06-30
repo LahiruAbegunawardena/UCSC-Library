@@ -14,6 +14,9 @@ export class AdmnbooksComponent implements OnInit {
   display2='none';
   display3='none';
 
+  dltID:any;
+
+
   bookdet = {
     bookname:'',
     authorname:'',
@@ -22,6 +25,7 @@ export class AdmnbooksComponent implements OnInit {
     isbn_no:''
   };
   updt_bookdet = {
+    _id:'',
     bookname:'',
     authorname:'',
     subject:'',
@@ -79,7 +83,7 @@ export class AdmnbooksComponent implements OnInit {
         successClass: 'success',
         close: true,
         //closeBtnClass: 'class1 class2',
-        navigate: '/'
+        navigate: '/mngborrow'
       });
     });
 
@@ -90,13 +94,15 @@ export class AdmnbooksComponent implements OnInit {
 
 
   openEdtBk(item:any){
+
+    this.updt_bookdet._id = item._id;
     this.updt_bookdet.authorname = item.authorname;
     this.updt_bookdet.bookname = item.bookname;
     //this.updt_bookdet.copies = item.copies;
     this.updt_bookdet.isbn_no = item.isbn_no;
     this.updt_bookdet.subject = item.subject;
 
-    console.log(this.updt_bookdet);
+    console.log("open edit book");
     console.log(item);
     this.display2="block";
   }
@@ -104,19 +110,59 @@ export class AdmnbooksComponent implements OnInit {
   onCloseHandled2(){
     this.display2 = "none";
   }
-  editBook(){
+  editMyBook(){
+    console.log("in ts file..");
     console.log(this.updt_bookdet);
+    //console.log(updtdet);
+
+    //this.auth.editMyBook(this.updt_bookdet);
+    
+    
+    this.auth.editMyBook(this.updt_bookdet).subscribe(res=>{
+
+      this.flashMessage.success('Book edited Successfully..', {
+        delay: 1500,
+        successClass: 'success',
+        close: true,
+        //closeBtnClass: 'class1 class2',
+        navigate: '/'
+      });
+    });
+
+    
+
+
     this.onCloseHandled2();
   }
 
   //......................delete book functionality..............
 
 
-  shwDlt(){
+  shwDlt(id:any){
+    this.dltID = id;
     this.display3="block";
   }
   onCloseHandled3(){
     this.display3 = "none";
+  }
+
+  deleteIt(){
+
+    this.auth.deleteBook(this.dltID).subscribe(res=>{
+
+      console.log(res);
+
+      this.flashMessage.success('Book deleted Successfully..', {
+        delay: 1500,
+        //successClass: 'success',
+        close: true,
+        //closeBtnClass: 'class1 class2',
+        navigate: '/'
+      });
+      
+    });
+
+    this.onCloseHandled3();
   }
 
   

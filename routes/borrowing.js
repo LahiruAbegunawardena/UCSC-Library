@@ -49,6 +49,22 @@ router.post("/show", (req, res)=>{
     });
 });
 
+router.post("/showMine",function (req,res){
+    console.log(req.body.username);
+    var unm = req.body.username;
+    
+    brrv.showAllRqstbyUsr(unm, function(err,reqst){
+        //mystate:boolean;
+        if(err) throw err;
+        if(reqst){
+            res.json({
+                requests:reqst
+            });
+        }
+    });
+    
+});
+
 router.post("/delete1",function (req,res){
      
     const id = req.body._id;

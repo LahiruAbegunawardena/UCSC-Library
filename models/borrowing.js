@@ -25,6 +25,11 @@ module.exports.showAllRqst = function(callback){
     myBrw.find(callback);
 };
 
+module.exports.showAllRqstbyUsr = function(username, callback){
+    const query = {username:username};
+    myBrw.find(query, callback);
+};
+
 /**module.exports.setBorrowDet = function(nwBorw,callback){
     nwBorw.save(callback);   
 };**/
@@ -37,6 +42,6 @@ module.exports.deleteBorrowReq = function(_id, callback){
 
    // const query = {username:username};
 
-    myUser.findOne(query,callback);
+    //myUser.findOne(query,callback);
     
 };

@@ -35,7 +35,7 @@
                       <td>{{item.isbn_no}}</td>
                       <td>
                           <button class="btn btn-info" (click)="openEdtBk(item)">Edit</button>
-                          <button class="btn btn-danger" (click)="shwDlt()">Delete</button>
+                          <button class="btn btn-danger" (click)="shwDlt(item)">Delete</button>
                       </td>
                       
                     </tr>
@@ -97,9 +97,16 @@
               <label for="exampleInputPassword1">No of copies</label>
               <input type="text" class="form-control" name="tno" placeholder="no of copies" value="" [(ngModel)] = "bookdet.copies" required>
             </div>
+
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-success" (click)="addnewBook()">Add Book</button>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
             
             
-            <button type="submit" class="btn btn-success" (click)="addnewBook()">Add</button>
                   
                                                        
           </fieldset>
@@ -156,13 +163,17 @@
               <label for="exampleInputPassword1">Subject</label>
               <input type="text" class="form-control" name="tno" placeholder="Truck no" value="updt_bookdet.subject" [(ngModel)] = "updt_bookdet.subject" required>
             </div>
-            <!--div class="form-group">
-              <label for="exampleInputPassword1">No of copies</label>
-              <input type="text" class="form-control" name="tno" placeholder="Truck no" values="" [(ngModel)] = "updt_bookdet.copies" required>
-            </div-->
+            
+              <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success" (click)="editMyBook()">Edit Book</button>
+                </div>
+                <div class="col-md-4"></div>
+              </div>
             
             
-            <button type="submit" class="btn btn-success" (click)="editBook()">Edit</button>
+            
                   
                                                        
           </fieldset>
@@ -206,7 +217,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-info" (click)="onCloseHandled3()">No</button>
-        <button type="button" class="btn btn-danger" (click)="onCloseHandled3()">Yes</button>
+        <button type="button" class="btn btn-danger" (click)="deleteIt()">Yes</button>
         
       </div>
     </div><!-- /.modal-content -->

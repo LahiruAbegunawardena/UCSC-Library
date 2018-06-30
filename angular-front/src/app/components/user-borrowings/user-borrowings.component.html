@@ -7,7 +7,7 @@
       <div class="card">
           <div class="header row">
               <h4 class="title col-md-8">Borrowings Details</h4>
-              <button class="btn btn-info btn-filled col-md-2">Requested Books</button>
+              <!--button class="btn btn-info btn-filled col-md-2">Requested Books</button-->
               <!--p class="category">Here is a subtitle for this table</p-->
           </div>
           <br>
@@ -17,18 +17,24 @@
                     <th class="col-md-1">Book no</th>
                     <th class="col-md-2">Book Name</th>
                     <th class="col-md-2">Taken Date</th>
-                    <th class="col-md-2">Expire Date</th>
-                    <!--th class="col-md-1">ISBN No</th>
-                    <th class="col-md-1">No of copies</th>
+                    <th class="col-md-2">Due Date</th>
+                    <th class="col-md-1">ISBN No</th>
+                    <!--th class="col-md-1">No of copies</th>
                     <th class="col-md-2">Request</th-->
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Hound of the Baskerwills</td>
-                      <td>2018-06-01</td>
-                      <td>2018-06-08</td>
-                      
+                    
+
+                    <tr *ngFor="let item of this.borrowdet">
+                      <td>{{item._id}}</td>
+                      <td>{{item.bookname}}</td>
+                      <td>{{item.takendate}}</td>
+                      <td>{{item.duedate}}</td>
+                      <td>{{item.isbn_no}}</td>
+                      <!--td>{{item.copies}}</td-->
+                      <!--td>
+                        <button class="btn btn-success" (click)="requestBk(item)">Request</button>
+                      </td-->
                     </tr>
                      
                   </tbody>

@@ -57,4 +57,53 @@ router.get("/",function (req,res){
     });
 });
 
+router.post("/edit", function(req,res){
+
+    const bookedtId = req.body;
+
+    Books.edtSlctdBook(bookedtId, function(err, book){
+        if(err) throw err;
+        if(book){
+            res.json({
+                state:true,
+                edited_details : book
+            });
+
+            console.log("Book row update successfully..");
+        }
+        if(!book){
+           // res.json({edited_details : book});
+
+            res.json({
+                state:false,
+                msg : "Book row updation faled.."
+            });
+           // console.log("Book row updation faled..");
+        }
+
+    });
+});
+
+router.post("/delete",function (req,res){
+     
+    const id = req.body._id;
+    
+    Books.deleteBook(id, function(err,book){
+        //mystate:boolean;
+        if(err){
+            res.json({
+                status:false
+            })
+            //console.log('Book deletion failed..'); 
+        }if(book){
+            res.json({
+                status:true
+            })
+           // console.log('Book deleted successfully..');
+        }
+    });
+    
+});
+
+
 module.exports = router;

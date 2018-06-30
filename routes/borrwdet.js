@@ -37,4 +37,51 @@ router.post("/show", (req, res)=>{
     });
 });
 
+router.post("/showMine",function (req,res){
+    console.log(req.body.username);
+    var unm = req.body.username;
+    
+    borrow.showAllMyBrw(unm, function(err,brw){
+        //mystate:boolean;
+        if(err) throw err;
+        if(brw){
+            res.json({
+               borrows:brw
+            });
+
+            
+
+            
+            //return brw;
+        }
+    });
+    
+});
+
+router.post("/edit", (req,res)=>{
+    const brwitm = req.body;
+
+    borrow.edtBrwdet(brwitm, function(err, book){
+        if(err) throw err;
+        if(book){
+            res.json({
+                state:true,
+                edited_details : book
+            });
+
+            console.log("Borrwings table updated successfully..");
+        }
+        if(!book){
+           // res.json({edited_details : book});
+
+            res.json({
+                state:false,
+                msg : "Borrwings table updation faled.."
+            });
+           // console.log("Book row updation faled..");
+        }
+
+    });
+});
+
 module.exports = router;

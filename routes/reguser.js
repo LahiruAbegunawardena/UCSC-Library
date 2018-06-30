@@ -179,6 +179,27 @@ router.post("/show", function(req,res){
     });
 });
 
+router.post("/delete",function (req,res){
+     
+    const id = req.body._id;
+    
+    User.deleteUsr(id, function(err,usr){
+        //mystate:boolean;
+        if(err){
+            res.json({
+                status:false
+            });
+            //console.log('Book deletion failed..'); 
+        }if(usr){
+            res.json({
+                status:true
+            });
+           // console.log('Book deleted successfully..');
+        }
+    });
+    
+});
+
 router.get("",function (req,res){
     res.send("hello User..");
 });

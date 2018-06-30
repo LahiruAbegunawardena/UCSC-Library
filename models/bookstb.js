@@ -28,5 +28,46 @@ module.exports.addBook = function(newBk, callback){
     newBk.save(callback);
 };
 
+module.exports.edtSlctdBook = function(edtbkid, callback){
+
+    query = {_id : edtbkid._id};
+
+    myBook.findByIdAndUpdate(
+        
+        query, 
+        {$set:{
+            bookname:edtbkid.bookname,
+            subject:edtbkid.subject,
+            authorname:edtbkid.authorname,
+            isbn_no:edtbkid.isbn_no
+        }}, 
+        function(err, list){
+            if(err) throw err;
+            if(list){
+                callback(null, list);
+            }
+        }
+    );
+
+    /**
+    myBook.updateOne(query,
+        {$set:{
+            bookname:edtbkid.bookname,
+            subject:edtbkid.subject,
+            authorname:edtbkid.authorname,
+            isbn_no:edtbkid.isbn_no
+        }}, callback
+    );
+    **/
+    
+};
+
+module.exports.deleteBook = function(_id, callback){
+
+    const query = {_id:_id};
+
+    myBook.remove(query,callback);
+};
+
 
 

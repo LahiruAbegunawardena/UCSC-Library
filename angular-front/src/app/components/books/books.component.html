@@ -7,7 +7,8 @@
       <div class="card">
           <div class="header row">
               <h4 class="title col-md-8">Book Details</h4>
-              <button class="btn btn-info btn-filled col-md-2">Requested Books</button>
+              <button class="btn btn-info btn-filled col-md-2" (click)="showMyRqst()">Requested Books</button>
+              <!--button class="btn btn-info btn-filled col-md-2">Requested Books</button-->
               <!--p class="category">Here is a subtitle for this table</p-->
           </div>
           <br>
@@ -47,7 +48,7 @@
                         <button class="btn btn-success" (click)="requestBk(item)">Request</button>
                       </td>
                     </tr>
-                     
+
                   </tbody>
               </table>
 
@@ -70,8 +71,8 @@
         <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
           <span aria-hidden="true">&times;</span>
         </button-->
-        
-          
+
+
       </div>
       <div class="modal-body container col-md-12">
 
@@ -80,13 +81,64 @@
         <p>
           Are you sure about requesting this book..
         </p>
-        
+
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-success" (click)="cnfrmRqst()">Yes</button>
         <button type="button" class="btn btn-danger" (click)="onCloseHandled()">No</button>
-        
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+<!--
+                               Show and delete my book requests
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display2}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display2}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">My book requests</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        <button type="button col-md-1" class="Close" aria-label="Close " (click)="onCloseHandled2()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <br>
+      <div class="content table-responsive table-full-width col-md-12">
+        <table class="table table-hover table-striped" style="align-content: center">
+            <thead>
+              <th class="col-md-3">Request no</th>
+              <th class="col-md-3">Book Name</th>
+              <th class="col-md-3">ISBN No</th>
+              <th class="col-md-3">Delete</th>
+            </thead>
+            <tbody>
+              
+                  <tr *ngFor="let item of this.bookreqData">
+                      <td>{{item._id}}</td>
+                     
+                      <td>{{item.bookname}}</td>
+                      <td>{{item.isbn_no}}</td>                      
+                      <td>
+                        
+                        <button class="btn btn-danger" (click)="deleteMyBkReq(item)">Delete</button>
+                      </td> 
+                      
+                    </tr>              
+            </tbody>
+        </table>
+
+    </div>
+
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

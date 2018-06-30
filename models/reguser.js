@@ -64,4 +64,11 @@ module.exports.findallUsers = function(callback){
  
     myUser.find(callback);
      
- };
+};
+
+module.exports.deleteUsr = function(_id, callback){
+
+    const query = {_id:_id};
+
+    myUser.remove(query,callback);
+};

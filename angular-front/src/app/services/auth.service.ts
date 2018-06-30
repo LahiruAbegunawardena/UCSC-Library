@@ -140,12 +140,39 @@ export class AuthService {
     
   }
 
+  editMyBook(book){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    console.log("in auth file..");
+    console.log(book);
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/books/edit",book, {headers:headers});
+  }
+
+  deleteBook(borrowreq){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/books/delete",borrowreq, {headers:headers});
+  }
+
   getallUserDet(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
 
     return this.http.post("http://localhost:3000/user/show", {headers:headers}).map(res=>res.json());
    // return this.http.post('');
+  }
+
+  deleteUser(usr){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/user/delete",usr, {headers:headers});
   }
 
   requestBorrowbk(bkdet){
@@ -191,6 +218,37 @@ export class AuthService {
     return this.http.post("http://localhost:3000/borrows/show", {headers:headers}).map(res=>res.json());
    // return this.http.post('');
   }
+
+  shwMyBrwReq(userdet){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/brwbook/showMine",userdet, {headers:headers}).map(res=>res.json());
+  }
+
+
+  getMyBorrwDet(userdet){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    //console.log('Userdetails: '+userdet);
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/borrows/showMine",userdet, {headers:headers}).map(res=>res.json());
+    //return dtset;
+  }
+
+  editBorrowdet(brw){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    console.log("in auth file..");
+    console.log(brw);
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/borrows/edit",brw, {headers:headers});
+  }
+
+
 
 }
 

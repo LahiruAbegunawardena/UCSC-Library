@@ -22,3 +22,29 @@ module.exports.insertBorrow = function(newBrw,callback){
 module.exports.showAllBrw = function(callback){
     myBorrowings.find(callback);
 };
+
+module.exports.showAllMyBrw = function(username, callback){
+    const query = {username:username};
+    //myBorrowings.find(query, callback);
+    myBorrowings.find(query,callback);
+};
+
+module.exports.edtBrwdet = function(edtitm, callback){
+
+    query = {_id : edtitm._id};
+
+    myBorrowings.findByIdAndUpdate(
+        
+        query, 
+        {$set:{   
+            duedate:edtitm.duedate
+        }}, 
+        function(err, list){
+            if(err) throw err;
+            if(list){
+                callback(null, list);
+            }
+        }
+    );
+    
+};

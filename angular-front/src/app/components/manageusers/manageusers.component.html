@@ -36,7 +36,7 @@
                           <td>{{item.contact}}</td>
                           <td>
                               <!--button class="btn btn-info" (click)="openEdtBk(item)">Edit</button-->
-                              <button class="btn btn-danger" (click)="shwDlt()">Delete</button>
+                              <button class="btn btn-danger" (click)="shwDlt(item)">Delete</button>
                           </td>
                           
                         </tr>
@@ -64,3 +64,40 @@
   </div>
 </div>
 </div>
+
+
+<!--
+                               Delete books
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Delete User</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        
+          
+      </div>
+      <div class="modal-body container col-md-12">
+
+        <!-- Form body -->
+
+        <p>
+          Are you sure about deleting this user
+        </p>
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="onCloseHandled()">No</button>
+        <button type="button" class="btn btn-danger" (click)="deleteIt()">Yes</button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
