@@ -84,4 +84,21 @@ router.post("/edit", (req,res)=>{
     });
 });
 
+router.post("/delete",function (req,res){
+     
+    const id = req.body.borw_id;
+    
+    borrow.deleteBorrow(id, function(err,user){
+        //mystate:boolean;
+        if(err){
+            console.log('data deletion failed..'); 
+        }if(user){
+            console.log('data deleted successfully..');
+            
+          
+        }
+    });
+    
+});
+
 module.exports = router;

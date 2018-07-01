@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { format } from 'util';
 import { DatePipe } from '@angular/common';
 import { FlashMessage } from 'angular-flash-message';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-managebrrws',
@@ -34,7 +35,7 @@ export class ManagebrrwsComponent implements OnInit {
     isbn_no:'',
     takendate:'',
     duedate:'',
-    fine:'0.00'
+    fine:''
   }
 
   updt_brrwdet = {
@@ -195,12 +196,85 @@ export class ManagebrrwsComponent implements OnInit {
 
   rslvBorrw(itm){
 
+    var today = new Date();
+    var today_dy = (today.getDate()+1), today_mnt = (today.getMonth()+1), today_yr = (today.getFullYear()+1);
+    var due = new Date(itm.duedate);
+    var due_dy = (due.getDate()+1), due_mnt = (due.getMonth()+1), due_yr = (due.getFullYear()+1);
+
+    //var today_dy = 1, today_mnt = 6, today_yr = 2018;
+    //var due_dy = 30, due_mnt = 9, due_yr = 2015;
+
+
+    var finalgap =0;
+    var gapday = 0, gapmnt=0, gapyr=0;
+
+    if(today_dy>=due_dy){
+      gapday = today_dy-due_dy;
+
+      if(today_mnt>=due_mnt){
+        gapmnt = (today_mnt-due_mnt);
+
+        if(today_yr>=due_yr){
+          gapyr =(today_yr-due_yr);
+        }else{
+          gapyr = 0; gapmnt=0; gapday=0;
+          finalgap = -1;
+        }
+      }else{
+        gapmnt = (12 + today_mnt-due_mnt);
+        today_yr = today_yr-1;    
+        
+        if(today_yr>=due_yr){
+          gapyr =(today_yr-due_yr);
+        }else{
+          gapyr = 0; gapmnt=0; gapday=0;
+          finalgap = -1;
+        }
+        
+      }
+    }else{
+      gapday = 30 + today_dy - due_dy;
+      today_mnt = today_mnt-1;
+
+      if(today_mnt>=due_mnt){
+        gapmnt = (today_mnt-due_mnt);
+
+        if(today_yr>=due_yr){
+          gapyr =(today_yr-due_yr);
+        }else{
+          gapyr = 0; gapmnt=0; gapday=0;
+          finalgap = -1;
+        }
+      }else{
+        gapmnt = (12 + today_mnt-due_mnt);
+        today_yr = today_yr-1;    
+        
+        if(today_yr>=due_yr){
+          gapyr =(today_yr-due_yr);
+        }else{
+          gapyr = 0; gapmnt=0; gapday=0;
+          finalgap = -1;
+        }
+        
+      }
+    }
+
+   if(finalgap==-1){
+     finalgap = 0;
+   }else{
+     finalgap = gapday + (gapmnt*30) + (gapyr*365);
+   }
+
+    console.log("gap "+finalgap);
+    console.log("gapday "+gapday + " gapmnt "+ gapmnt + " gapyr " + gapyr);
+
     this.rslv_borrowdet.borw_id = itm._id;
     this.rslv_borrowdet.username = itm.username;
     this.rslv_borrowdet.bookname = itm.bookname;
     this.rslv_borrowdet.isbn_no = itm.isbn_no;
     this.rslv_borrowdet.takendate = itm.takendate;
     this.rslv_borrowdet.duedate = itm.duedate;
+    this.rslv_borrowdet.fine = (finalgap*5).toString() + ".00";
 
     this.display4 = "block";
 
@@ -221,7 +295,38 @@ export class ManagebrrwsComponent implements OnInit {
   
   resolveIt(){
     console.log(this.rslv_borrowdet);
+
+    this.authService.addRslvdBrw(this.rslv_borrowdet).subscribe(res=>{
+      //console.log(res);
+
+      this.deleteFromBorrows(this.rslv_borrowdet);
+
+      
+
+    });
+
+    
+
+    
     this.onCloseHandled5();
+  }
+
+  deleteFromBorrows(rslv:any){
+    this.authService.deleteBrwDet(this.rslv_borrowdet).subscribe(res=>{
+
+      console.log(res);
+
+      
+      
+    });
+
+    this.flashMessage.success('Borrowed details resolved Successfully..', {
+      delay: 1500,
+      //successClass: 'success',
+      close: true,
+      //closeBtnClass: 'class1 class2',
+      navigate: '/'
+    });
   }
 
 }

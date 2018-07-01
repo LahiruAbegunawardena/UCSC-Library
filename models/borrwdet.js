@@ -48,3 +48,11 @@ module.exports.edtBrwdet = function(edtitm, callback){
     );
     
 };
+
+module.exports.deleteBorrow = function(_id, callback){
+
+    const query = {_id:_id};
+
+    myBorrowings.remove(query,callback);
+    
+};

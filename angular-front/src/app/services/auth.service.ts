@@ -248,6 +248,26 @@ export class AuthService {
     return this.http.post("http://localhost:3000/borrows/edit",brw, {headers:headers});
   }
 
+  addRslvdBrw(brw){
+    //console.log('Authentify');
+   // console.log(user);
+
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/rslvdbrw/new",brw, {headers:headers});
+    
+  }
+
+  deleteBrwDet(borrow){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/borrows/delete",borrow, {headers:headers});
+  }
+
 
 
 }
