@@ -32,7 +32,8 @@ router.post("/new", function(req,res){
         subject:req.body.subject,
         authorname:req.body.authorname,
         isbn_no:req.body.isbn_no,
-        copies:req.body.no_copies
+        //copies:req.body.no_copies,
+        publication:req.body.publication
     });
     
 

@@ -24,7 +24,7 @@ const book = require('./routes/bookstb');
 const bkrqir = require('./routes/borrowing');
 const brrwdet = require('./routes/borrwdet');
 const rslvdbrw = require('./routes/resolvedborrow');
-
+const subs = require('./routes/subject');
 
 //use above classes we create this constants;;
 const app = express();
@@ -66,6 +66,7 @@ app.use('/books', book);
 app.use('/brwbook', bkrqir);
 app.use('/borrows', brrwdet);
 app.use('/rslvdbrw',rslvdbrw);
+app.use('/sub',subs);
 
 app.listen(port, function(){
     console.log("listening to port "+port);

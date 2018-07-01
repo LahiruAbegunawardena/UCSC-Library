@@ -17,22 +17,23 @@
           <div class="content table-responsive table-full-width">
               <table class="table table-hover table-striped" style="align-content: center">
                   <thead>
-                    <th class="col-md-2">Book no</th>
+                    <!--th class="col-md-2">Book no</th-->
                     <th class="col-md-2">Book Name</th>
                     <th class="col-md-2">Subject</th>
                     <th class="col-md-2">Author name</th>
                     <th class="col-md-1">ISBN No</th>
+                    <th class="col-md-1">Publication</th>
                     <th class="col-md-3">Action</th>
                   </thead>
                   <tbody>
                     
                     <!--tr *ngFor="let item of this.bookData"-->
                     <tr *ngFor="let item of this.bookData">
-                      <td>{{item._id}}</td>
                       <td>{{item.bookname}}</td>
                       <td>{{item.subject}}</td>
                       <td>{{item.authorname}}</td>
                       <td>{{item.isbn_no}}</td>
+                      <td>{{item.publication}}</td>
                       <td>
                           <button class="btn btn-info" (click)="openEdtBk(item)">Edit</button>
                           <button class="btn btn-danger" (click)="shwDlt(item)">Delete</button>
@@ -91,11 +92,22 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Subject</label>
-              <input type="text" class="form-control" name="tno" placeholder="Subject" value="" [(ngModel)] = "bookdet.subject" required>
+              <!--input type="text" class="form-control" name="tno" placeholder="Subject" value="" [(ngModel)] = "bookdet.subject" required-->
+
+              <select  class="form-control" name="sub" placeholder="Subject" [(ngModel)] = "bookdet.subject" required>
+
+                  <option>Select subject..</option>
+
+                  <!--to select subject from book types table -->
+                  <option *ngFor="let itmm of subList">
+                    {{itmm.subject}}
+                  </option>
+              </select>
+
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">No of copies</label>
-              <input type="text" class="form-control" name="tno" placeholder="no of copies" value="" [(ngModel)] = "bookdet.copies" required>
+              <label for="exampleInputPassword1">Publication</label>
+              <input type="text" class="form-control" name="tnm" placeholder="publication" value="" [(ngModel)] = "bookdet.publication" required>
             </div>
 
             <div class="row">
@@ -162,6 +174,11 @@
             <div class="form-group">
               <label for="exampleInputPassword1">Subject</label>
               <input type="text" class="form-control" name="tno" placeholder="Truck no" value="updt_bookdet.subject" [(ngModel)] = "updt_bookdet.subject" required>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1">Publication</label>
+              <input type="text" class="form-control" name="tn" placeholder="publication" value="updt_bookdet.publication" [(ngModel)] = "updt_bookdet.publication" required>
             </div>
             
               <div class="row">

@@ -1,0 +1,107 @@
+<app-adminsidebar></app-adminsidebar>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
+      <div class="card">
+          <div class="header row">
+              <h4 class="title col-md-8">Resolved Borrows</h4>
+              <button class="btn btn-info btn-filled col-md-2" (click)="unpaid()">
+                Check Unpaid
+              </button>
+              
+              <!--p class="category">Here is a subtitle for this table</p-->
+          </div>
+          <br>
+          <div class="content table-responsive table-full-width">
+              <table class="table table-hover table-striped" style="align-content: center">
+                  <thead>
+                    <th class="col-md-2">Borrow Id</th>
+                    <th class="col-md-2">Username</th>
+                    <th class="col-md-2">TakenDate</th>
+                    <th class="col-md-2">DueDate</th>
+                    <th class="col-md-1">Fine</th>
+                    <th class="col-md-3">Status</th>
+                  </thead>
+                  <tbody>
+                    
+      
+                    <tr *ngFor="let item of this.rslvdData">
+                      <td>{{item.borrow_id}}</td>
+                      <td>{{item.username}}</td>
+                      <td>{{item.takendate}}</td>
+                      <td>{{item.duedate}}</td>
+                      <td>{{item.fine}}</td>
+                      <td>{{item.status}}</td>
+                      <!--td>
+                          <button class="btn btn-info" (click)="openEdtBk(item)">Edit</button>
+                          <button class="btn btn-danger" (click)="shwDlt(item)">Delete</button>
+                      </td-->
+                      
+                    </tr>
+                     
+                  </tbody>
+              </table>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--
+                               Unpaid resolved borrows
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Unpaid Borrow Details</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        <button type="button col-md-1" class="Close" aria-label="Close " (click)="oncloseEdit()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <br>
+      <div class="content table-responsive table-full-width col-md-12">
+        <table class="table table-hover table-striped" style="align-content: center">
+            <thead>
+              <th class="col-md-3">ResolvedId</th>
+              <th class="col-md-3">BorrowId</th>
+              <th class="col-md-2">Username</th>
+              <th class="col-md-2">Fine</th>
+              <th class="col-md-2">Pay Fine</th>
+              
+            </thead>
+            <tbody>
+              
+                  <tr *ngFor="let item of this.unpaiddData">
+                      <td>{{item._id}}</td>
+                      <td>{{item.borrow_id}}</td>                      
+                      <td>{{item.username}}</td>
+                      <td>{{item.fine}}</td>
+                                         
+                      <td>
+                        <button class="btn btn-default" (click)="pay(item)">Pay Fine</button>
+                      </td> 
+                      
+                    </tr>              
+            </tbody>
+        </table>
+
+    </div>
+
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+

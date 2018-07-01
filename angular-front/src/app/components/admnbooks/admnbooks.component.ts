@@ -15,14 +15,15 @@ export class AdmnbooksComponent implements OnInit {
   display3='none';
 
   dltID:any;
-
+  subList:any;
 
   bookdet = {
     bookname:'',
     authorname:'',
     subject:'',
     //copies:'',
-    isbn_no:''
+    isbn_no:'',
+    publication:''
   };
   updt_bookdet = {
     _id:'',
@@ -30,7 +31,8 @@ export class AdmnbooksComponent implements OnInit {
     authorname:'',
     subject:'',
     //copies:'',
-    isbn_no:''
+    isbn_no:'',
+    publication:''
   };
 
   constructor(
@@ -55,6 +57,7 @@ export class AdmnbooksComponent implements OnInit {
   //.......................add book functionality..............
 
   addBooks(){
+    this.loadSubs();
     this.display="block";
   }
   onCloseHandled(){
@@ -68,7 +71,7 @@ export class AdmnbooksComponent implements OnInit {
       bookname:this.bookdet.bookname,
       authorname:this.bookdet.authorname,
       subject:this.bookdet.subject,
-     // copies:this.bookdet.copies,
+      publication:this.bookdet.publication,
       isbn_no:this.bookdet.isbn_no
     };
     console.log(books_det);
@@ -101,6 +104,7 @@ export class AdmnbooksComponent implements OnInit {
     //this.updt_bookdet.copies = item.copies;
     this.updt_bookdet.isbn_no = item.isbn_no;
     this.updt_bookdet.subject = item.subject;
+    this.updt_bookdet.publication = item.publication;
 
     console.log("open edit book");
     console.log(item);
@@ -165,6 +169,15 @@ export class AdmnbooksComponent implements OnInit {
     this.onCloseHandled3();
   }
 
+  loadSubs(){
+    this.auth.showAllSub().subscribe(res=>{
+
+      this.subList = res.subjects;
+      console.log(this.subList);
+      
+      
+    });
+  }
   
 
 }

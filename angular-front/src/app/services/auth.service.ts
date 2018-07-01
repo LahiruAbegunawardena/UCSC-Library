@@ -268,7 +268,42 @@ export class AuthService {
     return this.http.post("http://localhost:3000/borrows/delete",borrow, {headers:headers});
   }
 
+  ShowAllRslvedBrw(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
 
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/rslvdbrw/show", {headers:headers}).map(res=>res.json());
+  }
+
+  ShowAllUnPaid(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/rslvdbrw/showUnpaid", {headers:headers}).map(res=>res.json());
+  }
+
+  updateUnpaid(details){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/rslvdbrw/edit",details, {headers:headers});
+  }
+
+  showAllSub(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/sub/show", {headers:headers}).map(res=>res.json());
+  }
+
+  showMyRslved(usrdet){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/rslvdbrw/showByMe", usrdet, {headers:headers}).map(res=>res.json());
+  }
 
 }
 

@@ -35,7 +35,8 @@ export class ManagebrrwsComponent implements OnInit {
     isbn_no:'',
     takendate:'',
     duedate:'',
-    fine:''
+    fine:'',
+    status:'not paid'
   }
 
   updt_brrwdet = {
@@ -275,6 +276,11 @@ export class ManagebrrwsComponent implements OnInit {
     this.rslv_borrowdet.takendate = itm.takendate;
     this.rslv_borrowdet.duedate = itm.duedate;
     this.rslv_borrowdet.fine = (finalgap*5).toString() + ".00";
+    this.rslv_borrowdet.status = "not paid";
+
+    if(finalgap==0){
+      this.rslv_borrowdet.status = "zero charge";
+    }
 
     this.display4 = "block";
 

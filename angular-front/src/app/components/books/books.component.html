@@ -15,12 +15,12 @@
           <div class="content table-responsive table-full-width">
               <table class="table table-hover table-striped" style="align-content: center">
                   <thead>
-                    <th class="col-md-1">Book no</th>
+                    <!--th class="col-md-1">Book no</th-->
                     <th class="col-md-2">Book Name</th>
                     <th class="col-md-2">Subject</th>
                     <th class="col-md-2">Author name</th>
                     <th class="col-md-1">ISBN No</th>
-                    <!--th class="col-md-1">No of copies</th-->
+                    <th class="col-md-1">Publication</th>
                     <th class="col-md-2">Request</th>
                   </thead>
                   <tbody>
@@ -38,12 +38,12 @@
 
                     <!--tr *ngFor="let item of this.bookData"-->
                     <tr *ngFor="let item of this.bookData">
-                      <td>{{item._id}}</td>
+                      <!--td>{{item._id}}</td-->
                       <td>{{item.bookname}}</td>
                       <td>{{item.subject}}</td>
                       <td>{{item.authorname}}</td>
                       <td>{{item.isbn_no}}</td>
-                      <!--td>{{item.copies}}</td-->
+                      <td>{{item.Publication}}</td>
                       <td>
                         <button class="btn btn-success" (click)="requestBk(item)">Request</button>
                       </td>

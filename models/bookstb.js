@@ -10,7 +10,7 @@ const bookSchema = new schema({
     subject:{type:String},
     authorname:{type:String},
     isbn_no:{type:String},
-    no_copies:{type:String}
+    publication:{type:String}
 });
 
 
@@ -39,7 +39,8 @@ module.exports.edtSlctdBook = function(edtbkid, callback){
             bookname:edtbkid.bookname,
             subject:edtbkid.subject,
             authorname:edtbkid.authorname,
-            isbn_no:edtbkid.isbn_no
+            isbn_no:edtbkid.isbn_no,
+            publication:edtbkid.publication
         }}, 
         function(err, list){
             if(err) throw err;

@@ -14,11 +14,11 @@
           <div class="content table-responsive table-full-width">
               <table class="table table-hover table-striped" style="align-content: center">
                   <thead>
-                    <th class="col-md-1">Book no</th>
+                    <!--th class="col-md-2">Book no</th-->
                     <th class="col-md-2">Book Name</th>
                     <th class="col-md-2">Taken Date</th>
                     <th class="col-md-2">Due Date</th>
-                    <th class="col-md-1">ISBN No</th>
+                    <th class="col-md-2">ISBN No</th>
                     <!--th class="col-md-1">No of copies</th>
                     <th class="col-md-2">Request</th-->
                   </thead>
@@ -26,7 +26,7 @@
                     
 
                     <tr *ngFor="let item of this.borrowdet">
-                      <td>{{item._id}}</td>
+                      <!--td>{{item._id}}</td-->
                       <td>{{item.bookname}}</td>
                       <td>{{item.takendate}}</td>
                       <td>{{item.duedate}}</td>
