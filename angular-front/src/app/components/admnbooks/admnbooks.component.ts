@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {FlashMessage} from 'angular-flash-message';
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-admnbooks',
@@ -177,6 +179,40 @@ export class AdmnbooksComponent implements OnInit {
       
       
     });
+  }
+
+  dwnload(){
+
+    var today = new Date();
+    var today_dy = (today.getDate()+1), today_mnt = (today.getMonth()+1), today_yr = (today.getFullYear()+1);
+
+    var date = today_yr + "-" + today_mnt + "-" + today_dy;
+    //var datenm = today_yr + "" + today_mnt + "-" + today_dy;
+
+    var rows =[];
+
+    var i=0;
+    for(let x of this.bookData){
+      var insiderow =[];
+      insiderow.push(this.bookData[i].bookname);
+      insiderow.push(this.bookData[i].authorname);
+      insiderow.push(this.bookData[i].subject);
+      insiderow.push(this.bookData[i].publication);
+      insiderow.push(this.bookData[i].isbn_no);  
+
+      i=i+1;
+      rows.push(insiderow);
+    }
+    
+    const doc = new jsPDF(
+      {orientation: 'landscape'}
+    );
+    //var cols = ["paying id", "borrow id", "username", "fine"];
+    let cols = ["bookname", "authername", "subject", "publication", "isbn_no"];
+
+    doc.autoTable(cols,rows);    
+    doc.text(10, 10, "Book Details - " + date);
+    doc.save('BookDetails.pdf');
   }
   
 

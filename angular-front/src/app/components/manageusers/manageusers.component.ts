@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessage } from 'angular-flash-message';
 
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 @Component({
   selector: 'app-manageusers',
   templateUrl: './manageusers.component.html',
@@ -66,5 +69,41 @@ export class ManageusersComponent implements OnInit {
 
     this.onCloseHandled();
   }
+
+  dwnload(){
+
+    var today = new Date();
+    var today_dy = (today.getDate()+1), today_mnt = (today.getMonth()+1), today_yr = (today.getFullYear()+1);
+
+    var date = today_yr + "-" + today_mnt + "-" + today_dy;
+    //var datenm = today_yr + "" + today_mnt + "-" + today_dy;
+
+    var rows =[];
+
+    var i=0;
+    for(let x of this.userData){
+      var insiderow =[];
+      insiderow.push(this.userData[i].firstname);
+      insiderow.push(this.userData[i].lastname);
+      insiderow.push(this.userData[i].username);
+      insiderow.push(this.userData[i].regno);
+      insiderow.push(this.userData[i].contact);  
+
+      i=i+1;
+      rows.push(insiderow);
+    }
+    
+    const doc = new jsPDF(
+      {orientation: 'landscape'}
+    );
+    //var cols = ["paying id", "borrow id", "username", "fine"];
+    let cols = ["firstname", "lastname",	"Username",	"Reg no",	"Contact"];
+
+    doc.autoTable(cols,rows);    
+    doc.text(10, 10, "User Details - " + date);
+    
+    doc.save('UserDetails.pdf');
+  }
+  
 
 }

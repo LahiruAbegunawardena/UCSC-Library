@@ -85,9 +85,6 @@ export class AdminfinesComponent implements OnInit {
       rows.push(insiderow);
     }
     
-  
-    
-
     const doc = new jsPDF();
     //var cols = ["paying id", "borrow id", "username", "fine"];
     let cols = ["username", "fine", "status"];
