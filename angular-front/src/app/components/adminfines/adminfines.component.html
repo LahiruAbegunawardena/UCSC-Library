@@ -6,10 +6,22 @@
       <div class="col-md-9">
       <div class="card">
           <div class="header row">
-              <h4 class="title col-md-8">Resolved Borrows</h4>
+              <h4 class="title col-md-6">Resolved Borrows</h4>
+              
+              <button class="btn btn-info btn-filled col-md-2" (click)="dwnload()">
+                  Generate report
+              </button>
+
+              <div class="col-md-1"></div>
+              
               <button class="btn btn-info btn-filled col-md-2" (click)="unpaid()">
                 Check Unpaid
               </button>
+
+              <div class="col-md-1"></div>
+
+              
+
               
               <!--p class="category">Here is a subtitle for this table</p-->
           </div>
