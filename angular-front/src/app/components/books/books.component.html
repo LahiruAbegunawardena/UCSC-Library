@@ -17,16 +17,18 @@
 
           <br>
 
-          <div class="row">
-              <button class="btn btn-default" disabled><i class="fa fa-search"></i>
-                <p class="hidden-lg hidden-md">Search</p>
+          <div class="row container">
+              <button class="btn btn-default" disabled><i class="fa fa-search">
+                  <p class="hidden-lg hidden-md">Search</p>
+              </i>
+                
               </button>
             
-            <div class="col-md-3">
-              <input class="form-control" name="searchString" placeholder="Type to Subject to Search..." [(ngModel)]="searchString">
+            <div class="col-md-2">
+              <input class="form-control" name="searchString" placeholder="Search with subject" [(ngModel)]="searchString">
             </div>
-            <div class="col-md-3">
-              <input class="form-control" name="searchString2" placeholder="Type to Book name to Search..." [(ngModel)]="searchString2">
+            <div class="col-md-2">
+              <input class="form-control" name="searchString2" placeholder="Search with name" [(ngModel)]="searchString2">
             </div>
 
           </div>
