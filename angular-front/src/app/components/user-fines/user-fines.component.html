@@ -13,21 +13,25 @@
           <div class="content table-responsive table-full-width">
               <table class="table table-hover table-striped" style="align-content: center">
                   <thead>
-                    <th class="col-md-3">Bookname</th>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-2">Bookname</th>
                     <th class="col-md-2">Taken date</th>
                     <th class="col-md-2">Due date</th>
-                    <th class="col-md-2">Fine (Rs.)</th>
-                    <th class="col-md-3">Status</th>
+                    <th class="col-md-2">Returned date</th>
+                    <th class="col-md-1">Fine(Rs.)</th>
+                    <th class="col-md-2">Status</th>
                     <!--th class="col-md-1">ISBN No</th>
                     <th class="col-md-1">No of copies</th>
                     <th class="col-md-2">Request</th-->
                   </thead>
                   <tbody>
-                      <tr *ngFor="let item of this.rslvdata">
+                      <tr *ngFor="let item of this.rslvdata; index as i">
                           
+                          <td>{{i+1}}</td>
                           <td>{{item.bookname}}</td>
                           <td>{{item.takendate}}</td>
                           <td>{{item.duedate}}</td>
+                          <td>{{item.returneddate}}</td>
                           <td>{{item.fine}}</td>
                           <td>{{item.status}}</td>
                          

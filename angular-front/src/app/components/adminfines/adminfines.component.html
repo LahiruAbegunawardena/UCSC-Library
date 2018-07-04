@@ -29,21 +29,25 @@
           <div class="content table-responsive table-full-width">
               <table class="table table-hover table-striped" style="align-content: center">
                   <thead>
+                    <th class="col-md-1">#</th>
                     <th class="col-md-2">Borrow Id</th>
                     <th class="col-md-2">Username</th>
-                    <th class="col-md-2">TakenDate</th>
+                    <th class="col-md-2">TakenDate</th>                    
                     <th class="col-md-2">DueDate</th>
-                    <th class="col-md-1">Fine</th>
-                    <th class="col-md-3">Status</th>
+                    <th class="col-md-2">Returned Date</th>
+                    <th class="col-md-1">Fine(Rs.)</th>
+                    <th class="col-md-2">Status</th>
                   </thead>
                   <tbody>
                     
       
-                    <tr *ngFor="let item of this.rslvdData">
+                    <tr *ngFor="let item of this.rslvdData; index as i">
+                      <td>{{i+1}}</td>
                       <td>{{item.borrow_id}}</td>
                       <td>{{item.username}}</td>
-                      <td>{{item.takendate}}</td>
+                      <td>{{item.takendate}}</td>                      
                       <td>{{item.duedate}}</td>
+                      <td>{{item.returneddate}}</td>
                       <td>{{item.fine}}</td>
                       <td>{{item.status}}</td>
                       <!--td>
@@ -85,16 +89,18 @@
       <div class="content table-responsive table-full-width col-md-12">
         <table class="table table-hover table-striped" style="align-content: center">
             <thead>
+              
               <th class="col-md-3">ResolvedId</th>
               <th class="col-md-3">BorrowId</th>
               <th class="col-md-2">Username</th>
               <th class="col-md-2">Fine</th>
-              <th class="col-md-2">Pay Fine</th>
+              <th class="col-md-1">Pay Fine</th>
               
             </thead>
             <tbody>
               
                   <tr *ngFor="let item of this.unpaiddData">
+                      
                       <td>{{item._id}}</td>
                       <td>{{item.borrow_id}}</td>                      
                       <td>{{item.username}}</td>

@@ -8,7 +8,7 @@
           <div class="header row">
               <h4 class="title col-md-8">User Details</h4>
               <button class="btn btn-info btn-filled col-md-2" (click)="dwnload()">
-                Report Generate
+                Generate Report
               </button>
               
               <!--p class="category">Here is a subtitle for this table</p-->
@@ -17,7 +17,7 @@
           <div class="content table-responsive table-full-width">
               <table class="table table-hover table-striped" style="align-content: center">
                   <thead>
-                    <th class="col-md-2">User no</th>
+                    <th>#</th>
                     <th class="col-md-1">firstname</th>
                     <th class="col-md-1">lastname</th>
                     <th class="col-md-2">Username</th>
@@ -27,8 +27,8 @@
                   </thead>
                   <tbody>
 
-                      <tr *ngFor="let item of this.userData">
-                          <td>{{item._id}}</td>
+                      <tr *ngFor="let item of this.userData; index as i">
+                          <td>{{i+1}}</td>
                           <td>{{item.firstname}}</td>
                           <td>{{item.lastname}}</td>
                           <td>{{item.username}}</td>

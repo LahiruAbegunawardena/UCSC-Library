@@ -29,6 +29,7 @@ import { AdmnbooksComponent } from './components/admnbooks/admnbooks.component';
 import { ManageusersComponent } from './components/manageusers/manageusers.component';
 import { ManagebrrwsComponent } from './components/managebrrws/managebrrws.component';
 import { AdminfinesComponent } from './components/adminfines/adminfines.component';
+import { AdmnsuggestComponent } from './components/admnsuggest/admnsuggest.component';
 
 const appRoutes: Routes = [
 
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
   { path: 'mnguser', component:ManageusersComponent},
   { path: 'mngborrow', component:ManagebrrwsComponent},
   { path: 'mngfines', component:AdminfinesComponent},
-
+  { path: 'mngsgst', component:AdmnsuggestComponent},
 
   
 ];
@@ -80,7 +81,8 @@ const appRoutes: Routes = [
     AdmnbooksComponent,
     ManageusersComponent,
     ManagebrrwsComponent,
-    AdminfinesComponent
+    AdminfinesComponent,
+    AdmnsuggestComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

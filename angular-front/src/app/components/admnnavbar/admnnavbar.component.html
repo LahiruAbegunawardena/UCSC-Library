@@ -9,23 +9,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Admin</a>
+            <a class="navbar-brand">Admin</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
                 
-                <li>
+                <!--li>
                   <a href="">
                         <i class="fa fa-search"></i>
         <p class="hidden-lg hidden-md">Search</p>
                     </a>
-                </li>
+                </li-->
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                  <a [routerLink]="['']">
-                      <p>Account</p>
+                  <a [routerLink]="['/admnProfile']">
+                      <p>{{loggedUserData.firstname}} {{loggedUserData.lastname}}</p>
                     </a>
                 </li>
                 

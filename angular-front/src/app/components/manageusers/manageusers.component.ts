@@ -73,9 +73,11 @@ export class ManageusersComponent implements OnInit {
   dwnload(){
 
     var today = new Date();
-    var today_dy = (today.getDate()+1), today_mnt = (today.getMonth()+1), today_yr = (today.getFullYear()+1);
+    var today_dy = today.getDate(), today_mnt = (today.getMonth()+1), today_yr = today.getFullYear();
 
-    var date = today_yr + "-" + today_mnt + "-" + today_dy;
+    var date1 = today_yr + "-" + today_mnt + "-" + today_dy;
+   var date = today_yr + "_" + today_mnt + "_" + today_dy;
+
     //var datenm = today_yr + "" + today_mnt + "-" + today_dy;
 
     var rows =[];
@@ -100,9 +102,9 @@ export class ManageusersComponent implements OnInit {
     let cols = ["firstname", "lastname",	"Username",	"Reg no",	"Contact"];
 
     doc.autoTable(cols,rows);    
-    doc.text(10, 10, "User Details - " + date);
+    doc.text(10, 10, "Report on User Details: " + date1);
     
-    doc.save('UserDetails.pdf');
+    doc.save('UserDetails'+date+'.pdf');
   }
   
 

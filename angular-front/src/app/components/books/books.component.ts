@@ -16,6 +16,7 @@ export class BooksComponent implements OnInit {
 
   display:any;
   display2:any;
+  display3:any;
   size = 0;
   public myarr=[];
 
@@ -29,6 +30,12 @@ export class BooksComponent implements OnInit {
   }
 
   gtdt={
+    username:''
+  }
+
+  sgst = {
+    bookname:'',
+    authorname:'',
     username:''
   }
 
@@ -101,9 +108,9 @@ export class BooksComponent implements OnInit {
     this.flashMessage.success('Book requested..', {
       delay: 1500,
       successClass: 'succeess',
-      close: true
+      close: true,
       //closeBtnClass: 'class1 class2',
-      //navigate: ''
+      navigate: '/books'
     });
   }
 
@@ -132,10 +139,39 @@ export class BooksComponent implements OnInit {
       successClass: 'success',
       close: true,
       //closeBtnClass: 'class1 class2',
-      navigate: '/'
+      navigate: '/books'
     });
+
+    this.onCloseHandled2();
   }
 
+  openSuggest(){
+    this.display3 = "block";
+  }
+  onCloseHandled3(){
+    this.display3 ='none'; 
+  }
  
+  sendSuggestion(){
+    this.sgst.username=this.loggedUserData.username;
+
+    this.auth.sendSgst(this.sgst).subscribe(res=>{
+      console.log(res);
+
+    });
+
+    this.onCloseHandled();
+
+    this.flashMessage.success('Suggestion sent..', {
+      delay: 1500,
+      successClass: 'succeess',
+      close: true
+      //closeBtnClass: 'class1 class2',
+      //navigate: ''
+    });
+    
+    this.onCloseHandled3();
+
+  }
 
 }

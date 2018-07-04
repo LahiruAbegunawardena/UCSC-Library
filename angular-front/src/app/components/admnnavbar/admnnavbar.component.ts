@@ -17,6 +17,8 @@ export class AdmnnavbarComponent implements OnInit {
     private routes:Router
   ) { }
 
+  loggedUserData:any;
+
   logoutAdmn(){
     this.authservice.logoutAdmin();
 
@@ -32,7 +34,15 @@ export class AdmnnavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.authservice.getAdmnProfileDet().subscribe(res=>{
+      console.log("user data : ");
+
+      this.loggedUserData = res.data;
+      console.log(this.loggedUserData);
+
+      
+
+    });
   }
 
 }

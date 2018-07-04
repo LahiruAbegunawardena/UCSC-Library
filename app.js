@@ -25,6 +25,7 @@ const bkrqir = require('./routes/borrowing');
 const brrwdet = require('./routes/borrwdet');
 const rslvdbrw = require('./routes/resolvedborrow');
 const subs = require('./routes/subject');
+const sgst = require('./routes/suggestion');
 
 //use above classes we create this constants;;
 const app = express();
@@ -54,7 +55,7 @@ if (dbconnection) {
 }
 
 //connected to frontend folder through this
-app.use(express.static(path.join(__dirname,"angular-front")));
+app.use(express.static(path.join(__dirname,"public")));
 
 app.get("/",function (req,res){
     res.send("hello world");
@@ -67,6 +68,8 @@ app.use('/brwbook', bkrqir);
 app.use('/borrows', brrwdet);
 app.use('/rslvdbrw',rslvdbrw);
 app.use('/sub',subs);
+app.use('/suggest',sgst);
+
 
 app.listen(port, function(){
     console.log("listening to port "+port);

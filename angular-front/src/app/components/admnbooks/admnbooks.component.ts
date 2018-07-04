@@ -184,9 +184,11 @@ export class AdmnbooksComponent implements OnInit {
   dwnload(){
 
     var today = new Date();
-    var today_dy = (today.getDate()+1), today_mnt = (today.getMonth()+1), today_yr = (today.getFullYear()+1);
+    var today_dy = today.getDate(), today_mnt = (today.getMonth()+1), today_yr = today.getFullYear();
 
-    var date = today_yr + "-" + today_mnt + "-" + today_dy;
+    var date = today_yr + "_" + today_mnt + "_" + today_dy;
+    var date1 = today_yr + "-" + today_mnt + "-" + today_dy;
+    //var date = today_yr + "-" + today_mnt + "-" + today_dy;
     //var datenm = today_yr + "" + today_mnt + "-" + today_dy;
 
     var rows =[];
@@ -210,9 +212,13 @@ export class AdmnbooksComponent implements OnInit {
     //var cols = ["paying id", "borrow id", "username", "fine"];
     let cols = ["bookname", "authername", "subject", "publication", "isbn_no"];
 
-    doc.autoTable(cols,rows);    
-    doc.text(10, 10, "Book Details - " + date);
-    doc.save('BookDetails.pdf');
+       
+    
+    doc.text(10, 10, "Report on Book Details: " + date1);
+    //doc.text(100, 5, "University of Colombo School of Computing");
+    
+    doc.autoTable(cols, rows);
+    doc.save('BookDetails'+date+'.pdf');
   }
   
 

@@ -305,5 +305,24 @@ export class AuthService {
     return this.http.post("http://localhost:3000/rslvdbrw/showByMe", usrdet, {headers:headers}).map(res=>res.json());
   }
 
+  sendSgst(sgst){
+    //console.log('Authentify');
+   // console.log(user);
+
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/suggest/new",sgst, {headers:headers});
+    
+  }
+
+  showSgst(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    //return this.http.post("http://localhost:3000/user/register",user, {headers:headers}).map(res=>res.json());
+    return this.http.post("http://localhost:3000/suggest/show", {headers:headers}).map(res=>res.json());
+  }
+
 }
 

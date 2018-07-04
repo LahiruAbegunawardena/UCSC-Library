@@ -1,0 +1,15 @@
+div.scroll {
+
+    width: 980px;
+    height: 450px;
+    overflow: scroll;
+  }
+  
+
+  div.scroll1 {
+
+    width: 880px;
+    height: 300px;
+    overflow: scroll;
+  }
+  

@@ -42,7 +42,8 @@ router.post("/new", function(req,res){
         bookname:req.body.bookname,
         borrow_id:req.body.borw_id,
         duedate:req.body.duedate,
-        takendate:req.body.duedate,
+        takendate:req.body.takendate,
+        returneddate:req.body.returneddate,
         fine:req.body.fine,
         status:req.body.status
         

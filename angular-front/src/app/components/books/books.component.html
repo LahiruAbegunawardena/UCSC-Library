@@ -6,23 +6,29 @@
       <div class="col-md-9">
       <div class="card">
           <div class="header row">
-              <h4 class="title col-md-8">Book Details</h4>
+              <h4 class="title col-md-6">Book Details</h4>
+              
+              <button class="btn btn-info btn-filled col-md-2" (click)="openSuggest()">Suggest books</button>
+              <div class="col-md-1"></div>
               <button class="btn btn-info btn-filled col-md-2" (click)="showMyRqst()">Requested Books</button>
-              <!--button class="btn btn-info btn-filled col-md-2">Requested Books</button-->
+              <div class="col-md-1"></div>
               <!--p class="category">Here is a subtitle for this table</p-->
           </div>
           <br>
-          <div class="content table-responsive table-full-width">
+          <div class="content table-responsive table-full-width col-md-12">
+            <div class="scroll">
               <table class="table table-hover table-striped" style="align-content: center">
                   <thead>
-                    <!--th class="col-md-1">Book no</th-->
+                    <th class="col-md-1">#</th>
                     <th class="col-md-2">Book Name</th>
                     <th class="col-md-2">Subject</th>
                     <th class="col-md-2">Author name</th>
                     <th class="col-md-1">ISBN No</th>
-                    <th class="col-md-1">Publication</th>
+                    <th class="col-md-2">Publication</th>
                     <th class="col-md-2">Request</th>
                   </thead>
+
+                  
                   <tbody>
                     <!--tr>
                       <td>1</td>
@@ -37,13 +43,13 @@
                     </tr-->
 
                     <!--tr *ngFor="let item of this.bookData"-->
-                    <tr *ngFor="let item of this.bookData">
-                      <!--td>{{item._id}}</td-->
+                    <tr *ngFor="let item of this.bookData; index as i">
+                      <td>{{i+1}}</td>
                       <td>{{item.bookname}}</td>
                       <td>{{item.subject}}</td>
                       <td>{{item.authorname}}</td>
                       <td>{{item.isbn_no}}</td>
-                      <td>{{item.Publication}}</td>
+                      <td>{{item.publication}}</td>
                       <td>
                         <button class="btn btn-success" (click)="requestBk(item)">Request</button>
                       </td>
@@ -51,6 +57,7 @@
 
                   </tbody>
               </table>
+            </div>
 
           </div>
       </div>
@@ -112,30 +119,99 @@
       </div>
      <br>
       <div class="content table-responsive table-full-width col-md-12">
-        <table class="table table-hover table-striped" style="align-content: center">
+        
+          <table class="table table-hover table-striped" style="align-content: center">
             <thead>
-              <th class="col-md-3">Request no</th>
-              <th class="col-md-3">Book Name</th>
+              <th class="col-md-2">#</th>
+              <th class="col-md-4">Book Name</th>
               <th class="col-md-3">ISBN No</th>
               <th class="col-md-3">Delete</th>
             </thead>
             <tbody>
-              
-                  <tr *ngFor="let item of this.bookreqData">
-                      <td>{{item._id}}</td>
-                     
+            
+                  <tr *ngFor="let item of this.bookreqData; index as i">
+                      <td>{{i+1}}</td>
                       <td>{{item.bookname}}</td>
                       <td>{{item.isbn_no}}</td>                      
                       <td>
-                        
-                        <button class="btn btn-danger" (click)="deleteMyBkReq(item)">Delete</button>
+                        <button class="btn btn-danger" (click)="deleteMyBkReq(item)">Delete Request</button>
                       </td> 
                       
                     </tr>              
             </tbody>
-        </table>
+          </table>
+      
+    </div>
+
+      <div class="modal-footer">
+        <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+
+
+<!--
+                               Suggest new books
+-->
+
+<div class="backdrop" [ngStyle]="{'display':display3}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display3}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <h4 class="modal-title col-md-11">Suggestions</h4>
+        <!--button type="button col-md-1" class="btn btn-danger" (click)="onCloseHandled()">
+          <span aria-hidden="true">&times;</span>
+        </button-->
+        <button type="button col-md-1" class="Close" aria-label="Close " (click)="onCloseHandled3()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <br>
+      
+
+     <div class="modal-body container col-md-12">
+
+      <!-- Form body -->
+
+      <form>
+                                
+
+        <div>
+            <div>
+                <div class="form-group">
+                    <label>Book name</label>
+                    <input type="text" class="form-control" placeholder="Username" name="unm" [(ngModel)]="sgst.bookname">
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label>Author name</label>
+                    <input type="text" class="form-control" placeholder="Register no" name="rgno" [(ngModel)]="sgst.authorname">
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            
+            <button type="submit" class="btn btn-success btn-fill pull-right" (click)="sendSuggestion()">Suggest</button>
+
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+
+        
+        <div class="clearfix"></div>
+      </form>
+
 
     </div>
+
+
 
       <div class="modal-footer">
         <!--button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button-->

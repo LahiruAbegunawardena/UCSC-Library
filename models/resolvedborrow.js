@@ -10,6 +10,7 @@ const rslvedSchema = new schema({
     borrow_id:{type:String},
     duedate:{type:String},
     takendate:{type:String},
+    returneddate:{type:String},
     fine:{type:String},
     status:{type:String}
 });
