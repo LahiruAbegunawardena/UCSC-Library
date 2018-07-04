@@ -30,6 +30,7 @@ import { ManageusersComponent } from './components/manageusers/manageusers.compo
 import { ManagebrrwsComponent } from './components/managebrrws/managebrrws.component';
 import { AdminfinesComponent } from './components/adminfines/adminfines.component';
 import { AdmnsuggestComponent } from './components/admnsuggest/admnsuggest.component';
+import { FilterPipe } from './pipe/filter.pipe';
 
 const appRoutes: Routes = [
 
@@ -82,7 +83,8 @@ const appRoutes: Routes = [
     ManageusersComponent,
     ManagebrrwsComponent,
     AdminfinesComponent,
-    AdmnsuggestComponent
+    AdmnsuggestComponent,
+    FilterPipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -23,6 +23,24 @@
               <!--p class="category">Here is a subtitle for this table</p-->
           </div>
           <br>
+          <div class="row">
+              
+              
+                <button class="btn btn-default" disabled><i class="fa fa-search"></i>
+                  <p class="hidden-lg hidden-md">Search</p>
+                </button>
+              
+              
+              <div class="col-md-3">
+                <input class="form-control" name="searchString" placeholder="Type to Subject to Search..." [(ngModel)]="searchString">
+              </div>
+              <div class="col-md-3">
+                <input class="form-control" name="searchString2" placeholder="Type to Book name to Search..." [(ngModel)]="searchString2">
+              </div>
+  
+          </div>
+  
+          <br>
           <div class="content table-responsive table-full-width">
             <div class="scroll">
               <table class="table table-hover table-striped" style="align-content: center">
@@ -39,7 +57,7 @@
                   <tbody>
                     
                     <!--tr *ngFor="let item of this.bookData"-->
-                    <tr *ngFor="let item of this.bookData; index as i">
+                    <tr *ngFor="let item of this.bookData | filter : 'subject' : searchString | filter : 'bookname' : searchString2; index as i">
                       <td>{{i+1}}</td>
                       <td>{{item.bookname}}</td>
                       <td>{{item.subject}}</td>
