@@ -48,9 +48,11 @@ const config = require('./config/database');
 //connect and check db
 const dbconnection = mongoose.connect(config.database);
 
-if (dbconnection) {
+// console.log("dbconnection value : " + dbconnection);
+
+if (dbconnection != null) {
     console.log('db connected successfully');
-} else {
+} else if(dbconnection == null){
     console.log('db connection failed');    
 }
 
